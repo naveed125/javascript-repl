@@ -16,11 +16,25 @@ let getFileContents = (fileName) => {
 };
 
 (async () => {
+    // without try catch
     console.log("about to get file");
     await getFileContents('./test.txt')
         .then((message) => console.log(message))
         .catch((message) => console.log(message));
     console.log("done getting file");
+
+    // with try catch
+    console.log("about to get file again");
+    try {
+        await getFileContents('./test1.txt')
+            .then((message) => console.log(message));
+        console.log("never gets here");
+    }
+    catch(ex) {
+        console.log(ex);
+    }
+    console.log("done getting file again");
+
 })();
 
 console.log("bye");
